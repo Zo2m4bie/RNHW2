@@ -7,10 +7,9 @@ import { LoginScreen, ProductDetailsScreen, ProductsListScreen } from './';
 export class NavigationComponent extends Component {
     
     render() {
-        console.log(this.props);
-        if(this.props.nav.currentpage == PRODUCT_DETAILS) {
+        if(this.props.currentpage == PRODUCT_DETAILS) {
             return <ProductDetailsScreen />;
-        } else if (this.props.nav.currentpage == PRODUCT_LIST) {
+        } else if (this.props.currentpage == PRODUCT_LIST) {
             return <ProductsListScreen />;
         } else {
             return <LoginScreen />;
@@ -20,9 +19,7 @@ export class NavigationComponent extends Component {
 }
 
 const mapStateToProps = (state) => {
-    
-    console.log(state);
-    return state;
+    return { currentpage: state.nav.currentpage };
 };
 
 export const ConnectedNavigationComponent = connect(mapStateToProps, null)(NavigationComponent);

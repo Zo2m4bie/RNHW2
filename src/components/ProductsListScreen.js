@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 import { openProductDetails } from '../actions/NavigationActions';
+import { saveProduct } from '../actions/ProductListAction';
 import { connect } from 'react-redux';
 
 export class ProductsListScreen extends Component {
 
+    selectProduct = (product) => {
+        this.props.saveProduct(product);
+        this.props.openProductDetails();
+    }
+    keyExtractor = ({ key }) => key;
+
     renderItem = ({item}) => {
-        return (<TouchableOpacity onPress={this.props.openProductDetails}>
+        return (<TouchableOpacity onPress={() => this.selectProduct({title: item.key})}>
                     <Text>{item.key}</Text>
                 </TouchableOpacity>);
     }
@@ -24,10 +31,11 @@ export class ProductsListScreen extends Component {
                     {key: 'Product 7'},
                     {key: 'Product 8'},
                 ]}
+                keyExtractor={this.keyExtractor}
                 renderItem={ this.renderItem }
             />
         </View>;
     }
 }
 
-export const ConnectedProductsListScreen = connect(null, { openProductDetails })(ProductsListScreen);
+export const ConnectedProductsListScreen = connect(null, { openProductDetails, saveProduct })(ProductsListScreen);
