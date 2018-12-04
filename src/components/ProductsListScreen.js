@@ -14,36 +14,36 @@ export class ProductsListScreen extends Component {
     keyExtractor = ({ key }) => key;
 
     renderItem = ({item}) => {
-        return (<TouchableOpacity onPress={() => this.selectProduct({title: item.key})} >
-                    <Image  style={{width: 48, height: 48}}
-                        source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
-                    <Text>{item.key}</Text>
-                    <Image  style={{width: 48, height: 48}}
-                        source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
+        return (<TouchableOpacity style={styles.productItemLayout} onPress={() => this.selectProduct(item)} >
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Image  style={styles.iconstyle}source={item.image}/>
+                        <Text style={styles.productItemName}>{item.key}</Text>
+                    </View>
+                    <Image  style={styles.arrowstyle} source={require('../../assets/images/chevron.png')}/>
                 </TouchableOpacity>);
     }
 
     render() {
-        return <View>
-            <View style={{height:100}}>
-                <Text style={styles.productstitle}>
-                    Products
-                </Text>
-            </View>
-            <FlatList
-                data={[
-                    {key: 'Product 1'},
-                    {key: 'Product 2'},
-                    {key: 'Product 3'},
-                    {key: 'Product 4'},
-                    {key: 'Product 5'},
-                    {key: 'Product 6'},
-                    {key: 'Product 7'},
-                    {key: 'Product 8'},
-                ]}
-                keyExtractor={this.keyExtractor}
-                renderItem={ this.renderItem }
-            />
+        return <View style={styles.productListMainLayout}>
+                <View style={{ flex:1, justifyContent: "center", alignItems: 'center' }}>
+                    <Text style={styles.productstitle}>
+                        Products
+                    </Text>
+                </View>
+                <FlatList style={{ width: '100%'}}
+                    data={[
+                        {key: 'Product 1', image: require('../../assets/images/1.png')},
+                        {key: 'Product 2', image: require("../../assets/images/2.png")},
+                        {key: 'Product 3', image: require("../../assets/images/3.png")},
+                        {key: 'Product 4', image: require("../../assets/images/4.png")},
+                        {key: 'Product 5', image: require("../../assets/images/5.png")},
+                        {key: 'Product 6', image: require("../../assets/images/6.png")},
+                        {key: 'Product 7', image: require("../../assets/images/7.png")},
+                        {key: 'Product 8', image: require("../../assets/images/8.png")},
+                    ]}
+                    keyExtractor={this.keyExtractor}
+                    renderItem={ this.renderItem }
+                />
         </View>;
     }
 }

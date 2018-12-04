@@ -7,7 +7,7 @@ import { styles } from './styles';
 export class LoginScreen extends Component {
     render() {
         console.log(styles);
-        return <View>
+        return <View style={{ flex:1, width: '100%' }}>
                     <View style={styles.titleLayout}>
                         <Text style={styles.welcome}>
                             Friday's shop
@@ -23,7 +23,6 @@ export class LoginScreen extends Component {
                             placeholder="password"
                             autoCapitalize = "none"></TextInput>
                         <Button 
-                            style = {styles.submitButton} 
                             title="Login" 
                             onPress={this.props.openProductList} />
                     </View>
