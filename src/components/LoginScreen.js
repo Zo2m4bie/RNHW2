@@ -2,14 +2,31 @@ import React, { Component } from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
 import { openProductList } from '../actions/NavigationActions';
 import { connect } from 'react-redux';
+import { styles } from './styles';
 
 export class LoginScreen extends Component {
     render() {
-        return <View style={{flex: 1}}>
-                    <Text>Friday's shop</Text>
-                    <TextInput style={{ width: '100%' }} placeholder="email"></TextInput>
-                    <TextInput style={{ width: '100%' }} placeholder="password"></TextInput>
-                    <Button style={{ width: 50 }} title="Login" onPress={this.props.openProductList} />
+        console.log(styles);
+        return <View>
+                    <View style={styles.titleLayout}>
+                        <Text style={styles.welcome}>
+                            Friday's shop
+                        </Text>
+                    </View>
+                    <View style={styles.inputLayout}>
+                        <TextInput 
+                            style = {styles.input} 
+                            autoCapitalize = "none"
+                            placeholder="email"></TextInput>
+                        <TextInput 
+                            style = {styles.input} 
+                            placeholder="password"
+                            autoCapitalize = "none"></TextInput>
+                        <Button 
+                            style = {styles.submitButton} 
+                            title="Login" 
+                            onPress={this.props.openProductList} />
+                    </View>
                 </View>;
     }
 }

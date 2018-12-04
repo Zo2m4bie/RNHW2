@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, FlatList, Text, TouchableOpacity } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity, Image } from 'react-native';
 import { openProductDetails } from '../actions/NavigationActions';
 import { saveProduct } from '../actions/ProductListAction';
 import { connect } from 'react-redux';
+import { styles } from './styles';
 
 export class ProductsListScreen extends Component {
 
@@ -13,13 +14,22 @@ export class ProductsListScreen extends Component {
     keyExtractor = ({ key }) => key;
 
     renderItem = ({item}) => {
-        return (<TouchableOpacity onPress={() => this.selectProduct({title: item.key})}>
+        return (<TouchableOpacity onPress={() => this.selectProduct({title: item.key})} >
+                    <Image  style={{width: 48, height: 48}}
+                        source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                     <Text>{item.key}</Text>
+                    <Image  style={{width: 48, height: 48}}
+                        source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}/>
                 </TouchableOpacity>);
     }
 
     render() {
         return <View>
+            <View style={{height:100}}>
+                <Text style={styles.productstitle}>
+                    Products
+                </Text>
+            </View>
             <FlatList
                 data={[
                     {key: 'Product 1'},
