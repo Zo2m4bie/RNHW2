@@ -6,8 +6,7 @@ import { styles } from './styles';
 
 export class LoginScreen extends Component {
     render() {
-        console.log(styles);
-        return <View style={{ flex:1, width: '100%' }}>
+        return <View style={styles.loginMainLayout}>
                     <View style={styles.titleLayout}>
                         <Text style={styles.welcome}>
                             Friday's shop

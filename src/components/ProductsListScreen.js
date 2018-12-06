@@ -25,12 +25,12 @@ export class ProductsListScreen extends Component {
 
     render() {
         return <View style={styles.productListMainLayout}>
-                <View style={{ flex:1, justifyContent: "center", alignItems: 'center' }}>
+                <View style={styles.productsLayout}>
                     <Text style={styles.productstitle}>
                         Products
                     </Text>
                 </View>
-                <FlatList style={{ width: '100%'}}
+                <FlatList style={styles.productList}
                     data={[
                         {key: 'Product 1', image: require('../../assets/images/1.png')},
                         {key: 'Product 2', image: require("../../assets/images/2.png")},

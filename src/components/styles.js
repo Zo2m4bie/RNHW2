@@ -9,6 +9,10 @@ export const styles = StyleSheet.create({
         fontFamily: "vinchand",
         width: '70%' 
     },
+    productDetailsReturnLayout: {
+        width: 110, 
+        marginTop: 10
+    },
     productDetailtsTitle: { 
         fontFamily: "vinchand",
         fontSize: 30, 
@@ -26,6 +30,14 @@ export const styles = StyleSheet.create({
         paddingEnd: 10, 
         flexDirection: 'column', 
         justifyContent: 'center' 
+    },
+    productDetailsImageLayout: {
+        flexDirection: 'row', 
+        alignItems: 'center'
+    },
+    productDetailsImage: {
+        width: 50, 
+        height: 50
     },
     productListMainLayout: { 
         flexDirection: 'column', 
@@ -49,15 +61,27 @@ export const styles = StyleSheet.create({
         paddingLeft: 10, 
         paddingRight: 10
     },
+    productsLayout: { 
+        flex: 1, 
+        justifyContent: "center", 
+        alignItems: 'center' 
+    },
     productstitle: {
       fontFamily: "vinchand",
       fontSize: 30,
       textAlign: 'center'
     },
+    productList: { 
+        width: '100%'
+    },
     welcome: {
      fontFamily: "vinchand",
       fontSize: 30,
       textAlign: "center",
+    },
+    loginMainLayout: { 
+        flex:1, 
+        width: '100%' 
     },
     loginLayout: {
         flex: 1, 

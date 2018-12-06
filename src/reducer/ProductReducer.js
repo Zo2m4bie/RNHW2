@@ -11,5 +11,3 @@ export const ProductReducer = (state = INITIAL_STATE, action) => {
     }
     return state;
 }
-
-export default {SELECT_PRODUCT, ProductReducer};
