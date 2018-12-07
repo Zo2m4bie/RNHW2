@@ -6,10 +6,13 @@ import { connect } from 'react-redux';
 import { styles } from './styles';
 
 export class ProductsListScreen extends Component {
-
+    goToProductDetails = () => {
+        const { navigate } = this.props.navigation;
+        navigate("ProductDetails");
+    }
     selectProduct = (product) => {
         this.props.saveProduct(product);
-        this.props.openProductDetails();
+        this.goToProductDetails();
     }
     keyExtractor = ({ key }) => key;
 

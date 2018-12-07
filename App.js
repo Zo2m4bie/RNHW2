@@ -11,7 +11,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import reducer from './src//reducer';
-import { NavigationComponent } from './src/components';
+import { StackNavigator } from './src/components';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -29,7 +29,7 @@ export default class App extends Component<Props> {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <NavigationComponent />
+          <StackNavigator />
         </View>
       </Provider>
     );

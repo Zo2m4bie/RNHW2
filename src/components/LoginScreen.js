@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import { styles } from './styles';
 
 export class LoginScreen extends Component {
+    
+    goToProductList = () => {
+        const { navigate } = this.props.navigation;
+        navigate("ProductsList");
+    }
+
     render() {
         return <View style={styles.loginMainLayout}>
                     <View style={styles.titleLayout}>
@@ -23,7 +29,7 @@ export class LoginScreen extends Component {
                             autoCapitalize = "none"></TextInput>
                         <Button 
                             title="Login" 
-                            onPress={this.props.openProductList} />
+                            onPress={this.goToProductList} />
                     </View>
                 </View>;
     }

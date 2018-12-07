@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-navigation": "^3.0.6",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1"
   },
@@ -19,9 +20,9 @@
     "react-test-renderer": "16.6.1"
   },
   "rnpm": {
-      "assets": [
-    "./assets/fonts/"
-      ]
+    "assets": [
+      "./assets/fonts/"
+    ]
   },
   "jest": {
     "preset": "react-native"
