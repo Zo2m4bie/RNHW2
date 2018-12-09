@@ -7,11 +7,12 @@
  */
 
 import React, {Component} from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import reducer from './src//reducer';
-import { StackNavigator } from './src/components';
+import thunk from 'redux-thunk';
+import reducer from './src/reducer';
+import { LoginScreen } from './src/components';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,14 +23,14 @@ const instructions = Platform.select({
 
 type Props = {};
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default class App extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <StackNavigator />
+          <LoginScreen />
         </View>
       </Provider>
     );
