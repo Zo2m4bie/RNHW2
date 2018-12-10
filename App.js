@@ -12,7 +12,8 @@ import { Provider } from 'react-redux';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import thunk from 'redux-thunk';
 import reducer from './src/reducer';
-import { LoginScreen } from './src/components';
+import { routes } from './src/components';
+import { createAppContainer } from 'react-navigation';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -21,16 +22,17 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
+// type Props = {};
 
+const ConnectedSwitch = createAppContainer(routes);
 const store = createStore(reducer, applyMiddleware(thunk));
 
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <LoginScreen />
+          <ConnectedSwitch />
         </View>
       </Provider>
     );
@@ -41,8 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5F000',
   },
   welcome: {
     fontSize: 20,

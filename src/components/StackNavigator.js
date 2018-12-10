@@ -13,5 +13,8 @@ export const StackNavigatorRoutes = createStackNavigator(
         ProductsList: {
             screen: ProductsListScreen
         }
+    },
+    {
+      initialRouteName: 'Login'
     }
 );

@@ -8,9 +8,9 @@ import { styles } from './styles';
 export class LoginScreen extends Component {
     
     goToProductList = () => {
-        this.props.loginAction();
-        // const { navigate } = this.props.navigation;
-        // navigate("ProductsList");
+        //this.props.loginAction();
+         const { navigate } = this.props.navigation;
+         navigate("ProductsList");
     }
 
     render() {
