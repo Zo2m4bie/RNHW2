@@ -8,12 +8,18 @@ import { styles } from './styles';
 export class LoginScreen extends Component {
     
     goToProductList = () => {
-        //this.props.loginAction();
-         const { navigate } = this.props.navigation;
-         navigate("ProductsList");
+        this.props.loginAction();
     }
 
+    componentDidUpdate() {
+        if(this.props.login.userLogedIn) {
+            const { navigate } = this.props.navigation;
+            navigate("ProductsList");
+        }
+    }
+    
     render() {
+        
         return <View style={styles.loginMainLayout}>
                     <View style={styles.titleLayout}>
                         <Text style={styles.welcome}>

@@ -5,13 +5,24 @@ import { LoginScreen, ProductDetailsScreen, ProductsListScreen } from './';
 export const StackNavigatorRoutes = createStackNavigator(
     {
         Login: {
-            screen: LoginScreen
+            screen: LoginScreen,
+            navigationOptions: {
+                title: "Login"
+            }
         },
         ProductDetails: {
-            screen: ProductDetailsScreen
+            screen: ProductDetailsScreen,
+            navigationOptions: {
+                title: "Product Details"
+            }
         },
         ProductsList: {
-            screen: ProductsListScreen
+            screen: ProductsListScreen,
+            navigationOptions: {
+                title: "Products List",
+                headerLeft: null,
+                gesturesEnabled: false,
+            }
         }
     },
     {
