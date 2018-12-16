@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
-
 import { LoginScreen, ProductDetailsScreen, ProductsListScreen } from './';
+import { SCREEN_NAMES } from './ScreenNames';
 
 export const StackNavigatorRoutes = createStackNavigator(
     {
@@ -26,6 +26,6 @@ export const StackNavigatorRoutes = createStackNavigator(
         }
     },
     {
-      initialRouteName: 'Login'
+      initialRouteName: SCREEN_NAMES.LOGIN
     }
 );

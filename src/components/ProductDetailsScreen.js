@@ -3,12 +3,13 @@ import { View, Text, Image, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { openProductList } from '../actions/NavigationActions';
 import { styles } from './styles';
+import { SCREEN_NAMES } from './ScreenNames';
 
 export class ProductDetailsScreen extends Component {
     
     goToProductList = () => {
         const { navigate } = this.props.navigation;
-        navigate("ProductsList");
+        navigate(SCREEN_NAMES.PRODUCT_LIST);
     }
 
     render() {

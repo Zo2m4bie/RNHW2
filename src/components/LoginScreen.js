@@ -4,22 +4,18 @@ import { openProductList } from '../actions/NavigationActions';
 import { changeEmail, changePassword, resetLoginData, loginAction } from '../actions/LoginActions';
 import { connect } from 'react-redux';
 import { styles } from './styles';
+import { SCREEN_NAMES } from './ScreenNames';
 
 export class LoginScreen extends Component {
-    
-    goToProductList = () => {
-        this.props.loginAction();
-    }
 
     componentDidUpdate() {
         if(this.props.login.userLogedIn) {
             const { navigate } = this.props.navigation;
-            navigate("ProductsList");
+            navigate(SCREEN_NAMES.PRODUCT_LIST);
         }
     }
     
     render() {
-        
         return <View style={styles.loginMainLayout}>
                     <View style={styles.titleLayout}>
                         <Text style={styles.welcome}>
@@ -42,7 +38,7 @@ export class LoginScreen extends Component {
                             autoCapitalize = "none"></TextInput>
                         <Button 
                             title="Login" 
-                            onPress={this.goToProductList} />
+                            onPress={this.props.loginAction} />
                     </View>
                 </View>;
     }
