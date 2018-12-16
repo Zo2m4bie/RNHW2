@@ -7,10 +7,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-native-gesture-handler": "^1.0.10",
+    "react-navigation": "^3.0.6",
     "react-redux": "^5.1.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
@@ -19,9 +23,9 @@
     "react-test-renderer": "16.6.1"
   },
   "rnpm": {
-      "assets": [
-    "./assets/fonts/"
-      ]
+    "assets": [
+      "./assets/fonts/"
+    ]
   },
   "jest": {
     "preset": "react-native"

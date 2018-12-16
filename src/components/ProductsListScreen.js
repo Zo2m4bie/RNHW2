@@ -4,12 +4,16 @@ import { openProductDetails } from '../actions/NavigationActions';
 import { saveProduct } from '../actions/ProductListAction';
 import { connect } from 'react-redux';
 import { styles } from './styles';
+import { SCREEN_NAMES } from './ScreenNames';
 
 export class ProductsListScreen extends Component {
-
+    goToProductDetails = () => {
+        const { navigate } = this.props.navigation;
+        navigate(SCREEN_NAMES.PRODUCT_DETAILS);
+    }
     selectProduct = (product) => {
         this.props.saveProduct(product);
-        this.props.openProductDetails();
+        this.goToProductDetails();
     }
     keyExtractor = ({ key }) => key;
 

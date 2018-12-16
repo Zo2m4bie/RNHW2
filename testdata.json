@@ -1,0 +1,69 @@
+{
+    "items": [
+      {
+    "id": 1,
+    "sku": "Ski",
+    "name": "Ski",
+    "attribute_set_id": 4,
+    "price": 500,
+    "status": 1,
+    "visibility": 4,
+    "type_id": "simple",
+    "created_at": "2018-12-11 13:23:56",
+    "updated_at": "2018-12-11 13:23:56",
+    "product_links": [],
+    "tier_prices": [],
+    "custom_attributes": [
+      {
+    "attribute_code": "options_container",
+    "value": "container2"
+    },
+      {
+    "attribute_code": "url_key",
+    "value": "ski"
+    },
+      {
+    "attribute_code": "gift_message_available",
+    "value": "2"
+    },
+      {
+    "attribute_code": "required_options",
+    "value": "0"
+    },
+      {
+    "attribute_code": "has_options",
+    "value": "0"
+    },
+      {
+    "attribute_code": "meta_title",
+    "value": "Ski"
+    },
+      {
+    "attribute_code": "meta_keyword",
+    "value": "Ski"
+    },
+      {
+    "attribute_code": "meta_description",
+    "value": "Ski "
+    },
+      {
+    "attribute_code": "tax_class_id",
+    "value": "2"
+    },
+      {
+    "attribute_code": "quantity_and_stock_status",
+    "value": "1"
+    },
+      {
+    "attribute_code": "category_ids",
+    "value": [],
+    }
+    ],
+    }
+    ],
+    "search_criteria": {
+    "filter_groups": [],
+    "page_size": 1
+    },
+    "total_count": 31
+    }
