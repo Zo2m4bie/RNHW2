@@ -9,38 +9,50 @@ import { ProductListItem } from './ProductListItem';
 import { ProductListHeader } from './ProductListHeader';
 
 export class ProductsListScreen extends Component {
+
     goToProductDetails = () => {
         const { navigate } = this.props.navigation;
         navigate(SCREEN_NAMES.PRODUCT_DETAILS);
     }
+
     selectProduct = (product) => {
         this.props.saveProduct(product);
         this.goToProductDetails();
     }
+
     keyExtractor = ({ key }) => key;
 
     renderItem = ({item}) => {
         if(item.type === 'Header'){
             return <ProductListHeader />
         } else {
-            return <ProductListItem item={item} />
+            return <ProductListItem item={item} onPress={() => this.selectProduct(item)} />
         }
     }
 
     componentDidMount() {
-        this.props.reinitList();
+      this.props.reinitList();
+    }
+
+    loadNextPage = () => {
+        if(this.props.productList.isThereMoreItems 
+            && !this.props.productList.isLoadingNextPage 
+            && !this.props.productList.isInitLoading){
+            this.props.loadNextPage();
+        }
     }
 
     render() {
+        console.log(this.props.productList);
         return <View style={styles.productListMainLayout}>
                 <FlatList style={styles.productList}
                     onRefresh={this.props.reinitList}
-                    refreshing={false}
+                    refreshing={this.props.productList.isInitLoading}
                     data={this.props.productList.productList}
                     keyExtractor={this.keyExtractor}
                     renderItem={ this.renderItem }
                     onEndReachedThreshold={0.75}
-                    onEndReached={this.props.loadNextPage}
+                    onEndReached={this.loadNextPage}
                 />
         </View>;
     }
