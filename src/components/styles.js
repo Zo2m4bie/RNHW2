@@ -63,6 +63,7 @@ export const styles = StyleSheet.create({
     },
     productsLayout: { 
         flex: 1, 
+        height: 100,
         justifyContent: "center", 
         alignItems: 'center' 
     },
@@ -72,6 +73,7 @@ export const styles = StyleSheet.create({
       textAlign: 'center'
     },
     productList: { 
+        flex: 1,
         width: '100%'
     },
     welcome: {

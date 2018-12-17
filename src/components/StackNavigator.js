@@ -26,6 +26,6 @@ export const StackNavigatorRoutes = createStackNavigator(
         }
     },
     {
-      initialRouteName: SCREEN_NAMES.LOGIN
+      initialRouteName: SCREEN_NAMES.PRODUCT_LIST
     }
 );

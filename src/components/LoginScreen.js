@@ -9,10 +9,10 @@ import { SCREEN_NAMES } from './ScreenNames';
 export class LoginScreen extends Component {
 
     componentDidUpdate() {
-        if(this.props.login.userLogedIn) {
+        // if(this.props.login.userLogedIn) {
             const { navigate } = this.props.navigation;
             navigate(SCREEN_NAMES.PRODUCT_LIST);
-        }
+        // }
     }
     
     render() {
