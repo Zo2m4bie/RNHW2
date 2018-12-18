@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image, Button, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { openProductList } from '../actions/NavigationActions';
 import { styles } from './styles';
@@ -11,13 +11,22 @@ export class ProductDetailsScreen extends Component {
         const { navigate } = this.props.navigation;
         navigate(SCREEN_NAMES.PRODUCT_LIST);
     }
+    
+    openMap = () => {
+        const { navigate } = this.props.navigation;
+        navigate(SCREEN_NAMES.MAP_SCREEN);
+    }
 
     render() {
         return <View style={styles.productDetailsLayout}>
             <View style={styles.productDetailsImageLayout}>
-                <Image  style={styles.productDetailsImage}
-                    source={this.props.productImage}/>
-                <Text style={styles.productDetailtsTitle}>{this.props.productTitle}</Text>
+                <TouchableHighlight 
+                    style={styles.productDetailsImage} 
+                    onPress={this.openMap}>
+                    <Image  style={styles.productDetailsImage}
+                        source={this.props.productImage}/>
+                    <Text style={styles.productDetailtsTitle}>{this.props.productTitle}</Text>
+                </TouchableHighlight>
             </View>
             <View style={styles.productDetailsContentLayout}>
                 <Text style={styles.productDetailtsContent}>

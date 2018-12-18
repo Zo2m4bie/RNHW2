@@ -42,8 +42,13 @@ export class ProductsListScreen extends Component {
         }
     }
 
+    showErrorDialog = () => {
+        if(this.props.login.showLoginError) {
+            return <NoInternetDialog tryAgain={this.props.loginAction} hideDialog={this.props.hideError} />
+        }
+        return <View />
+    }
     render() {
-        console.log(this.props.productList);
         return <View style={styles.productListMainLayout}>
                 <FlatList style={styles.productList}
                     onRefresh={this.props.reinitList}

@@ -1,4 +1,4 @@
-import { LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_RESET_DATA, USER_LOGED_IN } from '../reducer/types';
+import { LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_RESET_DATA, USER_LOGED_IN, LOGIN_ERROR_HIDE, LOGIN_ERROR } from '../reducer/types';
 import { login } from '../service/NetworkService';
 
 export const changeEmail = (email) => ({
@@ -18,16 +18,16 @@ export const loginAction = () => (dispatch, getState) => {
     let email = state.login.login;
     let password = state.login.password;
     login(email, password).then(res => {
-        console.log(res);
         if(res.status === 200) {
             dispatch({ type: USER_LOGED_IN });
         } else {
-            //todo handle error
+            dispatch({type: LOGIN_ERROR});
         }
     }).catch((err, res) => {
-        console.log('Request error');
-        console.log(err);
-        console.log(res);
-        //todo handle error
+        dispatch({type: LOGIN_ERROR});
     });
 }
+
+export const hideError = () => ({
+    type: LOGIN_ERROR_HIDE,
+})

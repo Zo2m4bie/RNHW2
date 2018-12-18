@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import { LoginScreen, ProductDetailsScreen, ProductsListScreen } from './';
+import { LoginScreen, ProductDetailsScreen, ProductsListScreen, MapScreen } from './';
 import { SCREEN_NAMES } from './ScreenNames';
 
 export const StackNavigatorRoutes = createStackNavigator(
@@ -23,9 +23,16 @@ export const StackNavigatorRoutes = createStackNavigator(
                 headerLeft: null,
                 gesturesEnabled: false,
             }
-        }
+        },
+        MapScreen: {
+            screen: MapScreen,
+            navigationOptions: {
+                title: "Map",
+                gesturesEnabled: false,
+            }
+        },
     },
     {
-      initialRouteName: SCREEN_NAMES.PRODUCT_LIST
+      initialRouteName: SCREEN_NAMES.LOGIN
     }
 );

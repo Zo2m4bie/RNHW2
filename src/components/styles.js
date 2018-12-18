@@ -1,5 +1,23 @@
 import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
+    modalWindowLayout: {
+        height: '100%',
+        width: '100%', 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    modalWindow: {
+        width: '80%', 
+        backgroundColor: 'rgba(255, 255, 255, 255)', 
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    modalButtonStyle: {
+        padding: 10,
+        alignItems: 'center'
+    },
     productItemName: {
         fontFamily: "vinchand",
         paddingStart: 10,
