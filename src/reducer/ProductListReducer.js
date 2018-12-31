@@ -23,8 +23,7 @@ export const ProductListReducer = (state = INITIAL_STATE, action) => {
                 totalCount: action.payload.totalCount, 
                 nextPage: 2 };
         case PRODUCT_LIST_UPDATE_LIST:
-            let nextPage = state.nextPage;
-            nextPage++;
+            let nextPage = state.nextPage + 1;
             return { ...state, 
                 productList: prepareList(state.productList, action.payload.items),
                 isLoadingNextPage: false,
