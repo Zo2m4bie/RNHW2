@@ -132,4 +132,9 @@ export const styles = StyleSheet.create({
        margin: 15,
        height: 48,
     },
+    emptyFieldsError: {
+        textAlign: 'center', 
+        alignItems: 'center',
+        color: '#ff0000',
+    }
   });

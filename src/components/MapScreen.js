@@ -6,7 +6,7 @@ import MapView, { Marker } from 'react-native-maps';
 const LONG = -0.076132;
 const LAT = 51.508530;
 
-export class MapScreen = () => {
+export const MapScreen = () => {
         return (<View style={{width:'100%', height: '100%'}}>
                 <MapView
                     style={{width:'100%', height: '100%'}}
