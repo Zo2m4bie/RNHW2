@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, Text, Animated, Easing } from 'react-native';
+import { View, TextInput, Button, Text, Animated, Easing, Vibration } from 'react-native';
 import { openProductList } from '../actions/NavigationActions';
 import { changeEmail, changePassword, resetLoginData, loginAction, hideError } from '../actions/LoginActions';
 import { connect } from 'react-redux';

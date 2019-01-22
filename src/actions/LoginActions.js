@@ -1,5 +1,5 @@
 import { LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_RESET_DATA, 
-    USER_LOGED_IN, LOGIN_ERROR_HIDE, LOGIN_ERROR, LOGIN_ERROR_EMPTY_FIELDS, LOGIN_START_LOGIN } from '../reducer/types';
+    USER_LOGED_IN, LOGIN_ERROR_HIDE, LOGIN_ERROR, LOGIN_ERROR_EMPTY_FIELDS, LOGIN_START_LOGIN, LOGIN_NO_NETWORK } from '../reducer/types';
 import { login } from '../service/NetworkService';
 import { saveLoginAndPassword } from '../storage';
 import { NetInfo } from 'react-native';
@@ -26,7 +26,7 @@ export const loginAction = () => (dispatch, getState) => {
     }
     NetInfo.getConnectionInfo().then((connectionInfo) => {
         if(connectionInfo.type || connectionInfo.type === 'none'  || connectionInfo.type === 'unknown') {
-            dispatch({ type: LOGIN_ERROR_EMPTY_FIELDS });
+            dispatch({ type: LOGIN_ERROR });
             return;
         }
         loginUser(email, password, dispatch);
