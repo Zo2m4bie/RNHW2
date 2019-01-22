@@ -8,17 +8,27 @@ import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
 import { getLoginAndPassword } from '../storage';
 
-export class LoginScreen extends Component {
+const DURATION = 500;
+
+export class LoginScreen extends Component {    
+
     constructor(){
         super();
         this.springValue = new Animated.Value(0.3);
         this.rotateInterpolate = new Animated.Value(0);
     }
+    
+    login = () => {
+        this.rotate();
+        this.props.loginAction();
+    }
+
     componentDidMount() {
         getLoginAndPassword().then(emailPass => {
             if(emailPass.email && emailPass.password) {
                 this.props.changeEmail(emailPass.email);
-                this.props.changePassword(emailPass.password)
+                this.props.changePassword(emailPass.password);
+                this.login();
             }
         });
     }
@@ -30,15 +40,26 @@ export class LoginScreen extends Component {
     }
     showErrorDialog = () => {
         if(this.props.login.showLoginError) {
+            Vibration.vibrate(DURATION);
             return <NoInternetDialog tryAgain={this.props.loginAction} hideDialog={this.props.hideError} />
         }
         return <View />
     }
+
     showEmptyFieldError = () => {
         if(this.props.login.oneOfFieldsEmpty){ //showProgress
+            Vibration.vibrate(DURATION);
             return <Text style={styles.emptyFieldsError}>Some fields are empty!</Text>;
         }
         return <View />
+    }
+
+    showNetworkErrorDialog =() => {
+        if(this.props.login.noInternetError){
+            Vibration.vibrate(DURATION);
+            return <NoInternetDialog tryAgain={this.props.loginAction} hideDialog={this.props.hideError} />
+        }
+        return <View />;
     }
     
     rotate = () => {
@@ -63,11 +84,6 @@ export class LoginScreen extends Component {
         ).start()
     }
 
-    login = () => {
-        this.rotate();
-        this.props.loginAction();
-    }
-    
     componentDidMount(){
         this.spring();
         this.rotateInterpolate.setValue(0);
