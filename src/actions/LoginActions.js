@@ -1,4 +1,5 @@
-import { LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_RESET_DATA, USER_LOGED_IN, LOGIN_ERROR_HIDE, LOGIN_ERROR } from '../reducer/types';
+import { LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_RESET_DATA, 
+    USER_LOGED_IN, LOGIN_ERROR_HIDE, LOGIN_ERROR, LOGIN_ERROR_EMPTY_FIELDS, LOGIN_START_LOGIN } from '../reducer/types';
 import { login } from '../service/NetworkService';
 
 export const changeEmail = (email) => ({
@@ -17,6 +18,11 @@ export const loginAction = () => (dispatch, getState) => {
     let state = getState();
     let email = state.login.login;
     let password = state.login.password;
+    if(isEmpty(email) || isEmpty(password)){
+        dispatch({ type: LOGIN_ERROR_EMPTY_FIELDS });
+        return;
+    }
+    dispatch({ type: LOGIN_START_LOGIN });
     login(email, password).then(res => {
         if(res.status === 200) {
             dispatch({ type: USER_LOGED_IN });
@@ -26,6 +32,12 @@ export const loginAction = () => (dispatch, getState) => {
     }).catch((err, res) => {
         dispatch({type: LOGIN_ERROR});
     });
+}
+function isEmpty(value) {
+    if(value && value.trim().length != 0){
+        return false;
+    }
+    return true;
 }
 
 export const hideError = () => ({

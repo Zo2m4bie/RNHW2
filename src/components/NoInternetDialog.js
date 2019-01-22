@@ -12,6 +12,7 @@ export class NoInternetDialog extends Component {
         return (
         <View>
             <Modal
+                animationType="slide"
                 transparent={true}
                 visible={true}>
                 <View style={styles.modalWindowLayout}>
