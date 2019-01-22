@@ -6,11 +6,21 @@ import { connect } from 'react-redux';
 import { styles } from './styles';
 import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
+import { getLoginAndPassword } from '../storage';
+
 export class LoginScreen extends Component {
     constructor(){
         super();
         this.springValue = new Animated.Value(0.3);
         this.rotateInterpolate = new Animated.Value(0);
+    }
+    componentDidMount() {
+        getLoginAndPassword().then(emailPass => {
+            if(emailPass.email && emailPass.password) {
+                this.props.changeEmail(emailPass.email);
+                this.props.changePassword(emailPass.password)
+            }
+        });
     }
     componentDidUpdate() {
         if(this.props.login.userLogedIn) {
