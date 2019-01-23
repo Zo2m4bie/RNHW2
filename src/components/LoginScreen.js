@@ -20,6 +20,7 @@ export class LoginScreen extends Component {
     
     login = () => {
         this.rotate();
+        console.log('login test');
         this.props.loginAction();
     }
 

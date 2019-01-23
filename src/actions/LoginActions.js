@@ -25,7 +25,7 @@ export const loginAction = () => (dispatch, getState) => {
         return;
     }
     NetInfo.getConnectionInfo().then((connectionInfo) => {
-        if(connectionInfo.type || connectionInfo.type === 'none'  || connectionInfo.type === 'unknown') {
+        if(!connectionInfo.type || connectionInfo.type === 'none'  || connectionInfo.type === 'unknown') {
             dispatch({ type: LOGIN_ERROR });
             return;
         }
@@ -35,16 +35,18 @@ export const loginAction = () => (dispatch, getState) => {
     });
 }
 
-function loginUser(email, password, dispatch){
+async function loginUser(email, password, dispatch){
     dispatch({ type: LOGIN_START_LOGIN });
     login(email, password).then(res => {
+        console.log(res.status);
         if(res.status === 200) {
-            await saveLoginAndPassword(email, password);
+            saveLoginAndPassword(email, password);
             dispatch({ type: USER_LOGED_IN });
         } else {
             dispatch({type: LOGIN_ERROR});
         }
     }).catch((err, res) => {
+        console.log(err);
         dispatch({type: LOGIN_ERROR});
     });
 }
