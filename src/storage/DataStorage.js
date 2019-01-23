@@ -4,10 +4,10 @@ const Buffer = require("buffer").Buffer;
 const AUTH = "auth_data";
 const LOGIN_AND_PATH = 2;
 
-export const saveLoginAndPassword = (email, password) => {
+export const saveLoginAndPassword =  async (email, password) => {
     let encodedAuth = new Buffer(email + ':' + password).toString("base64");
     // Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii')
-    return AsyncStorage.setItem(AUTH, encodedAuth);
+    await AsyncStorage.setItem(AUTH, encodedAuth);
 }
 
 export const getLoginAndPassword = async () => {
