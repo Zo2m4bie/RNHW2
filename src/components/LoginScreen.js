@@ -54,14 +54,6 @@ export class LoginScreen extends Component {
         }
         return <View />
     }
-
-    showNetworkErrorDialog =() => {
-        if(this.props.login.noInternetError){
-            Vibration.vibrate(DURATION);
-            return <NoInternetDialog tryAgain={this.props.loginAction} hideDialog={this.props.hideError} />
-        }
-        return <View />;
-    }
     
     rotate = () => {
         this.rotateInterpolate = new Animated.Value(0);
