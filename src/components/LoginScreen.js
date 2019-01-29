@@ -1,16 +1,37 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, Text, Animated, Easing } from 'react-native';
+import { View, TextInput, Button, Text, Animated, Easing, Vibration } from 'react-native';
 import { openProductList } from '../actions/NavigationActions';
 import { changeEmail, changePassword, resetLoginData, loginAction, hideError } from '../actions/LoginActions';
 import { connect } from 'react-redux';
 import { styles } from './styles';
 import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
-export class LoginScreen extends Component {
+import { getLoginAndPassword } from '../storage';
+
+const DURATION = 500;
+
+export class LoginScreen extends Component {    
+
     constructor(){
         super();
         this.springValue = new Animated.Value(0.3);
         this.rotateInterpolate = new Animated.Value(0);
+    }
+    
+    login = () => {
+        this.rotate();
+        console.log('login test');
+        this.props.loginAction();
+    }
+
+    componentDidMount() {
+        getLoginAndPassword().then(emailPass => {
+            if(emailPass.email && emailPass.password) {
+                this.props.changeEmail(emailPass.email);
+                this.props.changePassword(emailPass.password);
+                this.login();
+            }
+        });
     }
     componentDidUpdate() {
         if(this.props.login.userLogedIn) {
@@ -20,12 +41,15 @@ export class LoginScreen extends Component {
     }
     showErrorDialog = () => {
         if(this.props.login.showLoginError) {
+            Vibration.vibrate(DURATION);
             return <NoInternetDialog tryAgain={this.props.loginAction} hideDialog={this.props.hideError} />
         }
         return <View />
     }
+
     showEmptyFieldError = () => {
         if(this.props.login.oneOfFieldsEmpty){ //showProgress
+            Vibration.vibrate(DURATION);
             return <Text style={styles.emptyFieldsError}>Some fields are empty!</Text>;
         }
         return <View />
@@ -53,11 +77,6 @@ export class LoginScreen extends Component {
         ).start()
     }
 
-    login = () => {
-        this.rotate();
-        this.props.loginAction();
-    }
-    
     componentDidMount(){
         this.spring();
         this.rotateInterpolate.setValue(0);
