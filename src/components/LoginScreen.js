@@ -92,7 +92,7 @@ export class LoginScreen extends Component {
                     <View style={ styles.titleLayout }>
                         <Animated.View style={{ transform: [{scale: this.springValue}]}}>
                             <Text style={styles.welcome}>
-                                Friday's shop
+                                Friday's shop {'\n'}{this.props.login.helloMessage}
                             </Text>
                         </Animated.View>
                     </View>

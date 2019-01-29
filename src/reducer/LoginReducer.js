@@ -2,8 +2,17 @@ import { LOGIN_CHANGE_EMAIL, LOGIN_CHANGE_PASSWORD, LOGIN_RESET_DATA,
     USER_LOGED_IN, LOGIN_ERROR, LOGIN_ERROR_HIDE, LOGIN_START_LOGIN, 
     LOGIN_ERROR_WRONG_FIELDS, LOGIN_ERROR_EMPTY_FIELDS, LOGIN_NO_NETWORK } from './types';
 import { LayoutAnimation } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
+
+const IOS = 'iOS';
+const IPHONE = 'iPhone OS';
+
+isApplePhone = () => {
+    return DeviceInfo.getSystemName() === IOS || DeviceInfo.getSystemName() === IPHONE;
+}
 
 const INITIAL_STATE = {
+    helloMessage: isApplePhone() ? 'Hello from apple device' : 'Hello from android device',
     login: '',
     password: '',
     userLogedIn: false,
