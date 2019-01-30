@@ -109,6 +109,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'stretch'
     },
+    loginLttyAnimationHeight: {
+        height: 100
+    },
     titleLayout: {
         flex: 1, 
         flexDirection: 'column',

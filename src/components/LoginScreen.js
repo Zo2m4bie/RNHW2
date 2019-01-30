@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
 import { getLoginAndPassword } from '../storage';
+import LottieView from 'lottie-react-native';
 
 const DURATION = 500;
 
@@ -16,11 +17,13 @@ export class LoginScreen extends Component {
         super();
         this.springValue = new Animated.Value(0.3);
         this.rotateInterpolate = new Animated.Value(0);
+        this.state = {
+          progress: new Animated.Value(0),
+        };
     }
     
     login = () => {
         this.rotate();
-        console.log('login test');
         this.props.loginAction();
     }
 
@@ -32,6 +35,14 @@ export class LoginScreen extends Component {
                 this.login();
             }
         });
+        this.spring();
+        this.rotateInterpolate.setValue(0);
+        // this.animation.play();
+        Animated.timing(this.state.progress, {
+          toValue: 1,
+          duration: 5000,
+          easing: Easing.linear,
+        }).start();
     }
     componentDidUpdate() {
         if(this.props.login.userLogedIn) {
@@ -60,8 +71,7 @@ export class LoginScreen extends Component {
         Animated.timing(this.rotateInterpolate, 
             {
               toValue: 1,
-              duration: 2000,
-              easing: Easing.linear
+              duration: 50000
             }).start();
     }
 
@@ -75,11 +85,6 @@ export class LoginScreen extends Component {
             tension: 1
           }
         ).start()
-    }
-
-    componentDidMount(){
-        this.spring();
-        this.rotateInterpolate.setValue(0);
     }
 
     render() {
@@ -116,6 +121,12 @@ export class LoginScreen extends Component {
                                 title="Login" 
                                 onPress={this.login} />
                         </Animated.View>
+                        <View style={styles.loginLttyAnimationHeight}>
+                            <LottieView 
+                                progress={this.state.progress}
+                                source={require('../../assets/Watermelon')}
+                            />
+                        </View>
                     </View>
                 </View>;
     }

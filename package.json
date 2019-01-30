@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "buffer": "^5.2.1",
+    "lottie-react-native": "^2.5.11",
     "react": "16.6.1",
     "react-native": "0.57.7",
     "react-native-device-info": "^0.25.1",
