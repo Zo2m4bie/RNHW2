@@ -15,6 +15,7 @@ import reducer from './src/reducer';
 import { routes } from './src/components';
 import { createAppContainer } from 'react-navigation';
 import styles from './style';
+import SplashScreen from 'react-native-splash-screen'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -29,6 +30,14 @@ const ConnectedSwitch = createAppContainer(routes);
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default class App extends Component {
+
+  componentDidMount() {
+    // do stuff while splash screen is shown
+      // After having done stuff (such as async tasks) hide the splash screen
+      console.log('componentDidMount');
+      SplashScreen.hide();
+  }
+
   render() {
     return (
       <Provider store={store}>

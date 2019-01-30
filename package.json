@@ -15,6 +15,7 @@
     "react-native-gesture-handler": "^1.0.10",
     "react-native-maps": "^0.22.1",
     "react-native-phone-call": "^1.0.9",
+    "react-native-splash-screen": "^3.1.1",
     "react-navigation": "^3.0.6",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
