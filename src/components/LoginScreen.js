@@ -17,9 +17,7 @@ export class LoginScreen extends Component {
         super();
         this.springValue = new Animated.Value(0.3);
         this.rotateInterpolate = new Animated.Value(0);
-        this.state = {
-          progress: new Animated.Value(0),
-        };
+        this.progress = new Animated.Value(0);
     }
     
     login = () => {
