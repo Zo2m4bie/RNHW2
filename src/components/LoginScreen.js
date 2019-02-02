@@ -36,7 +36,7 @@ export class LoginScreen extends Component {
         this.spring();
         this.rotateInterpolate.setValue(0);
         // this.animation.play();
-        Animated.timing(this.state.progress, {
+        Animated.timing(this.progress, {
           toValue: 1,
           duration: 5000,
           easing: Easing.linear,
@@ -121,7 +121,7 @@ export class LoginScreen extends Component {
                         </Animated.View>
                         <View style={styles.loginLttyAnimationHeight}>
                             <LottieView 
-                                progress={this.state.progress}
+                                progress={this.progress}
                                 source={require('../../assets/Watermelon')}
                             />
                         </View>
