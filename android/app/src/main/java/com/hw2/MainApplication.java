@@ -32,7 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
             new SplashScreenReactPackage(),
             new RNDeviceInfo(),
             new MapsPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+              new NativeStoragePackage()
       );
     }
 
