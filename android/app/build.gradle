@@ -115,6 +115,11 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    configurations.all {
+        resolutionStrategy {
+            force "com.airbnb.android:lottie:2.5.5"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
@@ -137,6 +142,9 @@ android {
 }
 
 dependencies {
+    compile project(':lottie-react-native')
+    compile project(':react-native-splash-screen')
+    compile project(':react-native-device-info')
     implementation project(':react-native-gesture-handler')
     implementation project(':react-native-maps')
     implementation fileTree(dir: "libs", include: ["*.jar"])

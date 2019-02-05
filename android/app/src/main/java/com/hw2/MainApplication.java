@@ -3,6 +3,9 @@ package com.hw2;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,8 +28,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new LottiePackage(),
+            new SplashScreenReactPackage(),
+            new RNDeviceInfo(),
             new MapsPackage(),
-            new RNGestureHandlerPackage()
+            new RNGestureHandlerPackage(),
+              new NativeStoragePackage()
       );
     }
 
