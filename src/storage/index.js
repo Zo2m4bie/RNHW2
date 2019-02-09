@@ -1,1 +1,1 @@
-export { saveLoginAndPassword, getLoginAndPassword } from './DataStorage';
+export { saveLoginAndPasswordAndToken, getLoginAndPasswordAndToken } from './DataStorage';

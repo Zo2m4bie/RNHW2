@@ -1,6 +1,25 @@
-import { loadPage } from '../service/NetworkService';
+import { loadPage, createBasket, addItemToBasket } from '../service/NetworkService';
 import { SELECT_PRODUCT } from '../reducer/ProductReducer';
-import { PRODUCT_LIST_REINIT, PRODUCT_LIST_UPDATE_LIST, PRODUCT_LIST_START_LOADING_NEXT_PAGE, PRODUCT_LIST_START_REINIT } from '../reducer/types';
+import { PRODUCT_LIST_REINIT, PRODUCT_LIST_ITEM_ADDED_TO_BASKET, PRODUCT_LIST_UPDATE_LIST, PRODUCT_LIST_START_LOADING_NEXT_PAGE, PRODUCT_LIST_START_REINIT } from '../reducer/types';
+import { getLoginAndPasswordAndToken } from '../storage';
+
+export const addToBasket = (product)  => (dispatch) => {
+    getLoginAndPasswordAndToken().then((userData) => {
+        console.log(userData);
+        createBasket(userData.token).then(data => {
+            console.log('BasketCreated');
+            let quoteId = data.data;
+            console.log(quoteId);
+            addItemToBasket(product.sku, 1, quoteId, token).then(data2 => {
+                console.log('Add item to basket');
+                console.log(data2);
+            });
+
+        });
+    });
+
+    dispatch({ type: PRODUCT_LIST_ITEM_ADDED_TO_BASKET });
+}
 
 export const saveProduct = (product) => ({
     type: SELECT_PRODUCT,
@@ -17,7 +36,7 @@ export const reinitList = ()  => (dispatch) => {
         let result = [{key: 'Header', type: 'Header'}];
         let items =data.data.items;
         let totalCount = data.data.total_count;
-        items.map(item => result.push({key: "" + item.id, name: item.name, image: require('../../assets/images/1.png')}));
+        items.map(item => result.push({key: "" + item.id, name: item.name, image: require('../../assets/images/1.png'), sku: item.sku}));
         dispatch({
             type: PRODUCT_LIST_REINIT,
             payload: { items: result, totalCount }
@@ -46,28 +65,5 @@ export const loadNextPage = () => (dispatch, getState) => {
     }).catch(err => {
         //TODO error
     });
-    /*let data = [
-        {key: nextPage + 'Product 1', image: require('../../assets/images/1.png')},
-        {key: nextPage + 'Product 2', image: require("../../assets/images/2.png")},
-        {key: nextPage + 'Product 3', image: require("../../assets/images/3.png")},
-        {key: nextPage + 'Product 4', image: require("../../assets/images/4.png")},
-        {key: nextPage + 'Product 5', image: require("../../assets/images/5.png")},
-        {key: nextPage + 'Product 6', image: require("../../assets/images/6.png")},
-        {key: nextPage + 'Product 7', image: require("../../assets/images/7.png")},
-        {key: nextPage + 'Product 8', image: require("../../assets/images/8.png")},
-        {key: nextPage + 'Product 9', image: require("../../assets/images/8.png")},
-        {key: nextPage + 'Product 10', image: require("../../assets/images/8.png")},
-        {key: nextPage + 'Product 11', image: require('../../assets/images/1.png')},
-        {key: nextPage + 'Product 12', image: require("../../assets/images/2.png")},
-        {key: nextPage + 'Product 13', image: require("../../assets/images/3.png")},
-        {key: nextPage + 'Product 14', image: require("../../assets/images/4.png")},
-        {key: nextPage + 'Product 15', image: require("../../assets/images/5.png")},
-        {key: nextPage + 'Product 16', image: require("../../assets/images/6.png")},
-        {key: nextPage + 'Product 17', image: require("../../assets/images/7.png")},
-        {key: nextPage + 'Product 18', image: require("../../assets/images/8.png")},
-    ];
-    dispatch({
-        type: PRODUCT_LIST_UPDATE_LIST,
-        payload: data
-    });*/
+    
 }

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { styles } from './styles';
 import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
-import { getLoginAndPassword } from '../storage';
+import { getLoginAndPasswordAndToken } from '../storage';
 import LottieView from 'lottie-react-native';
 
 const DURATION = 500;
@@ -26,7 +26,7 @@ export class LoginScreen extends Component {
     }
 
     componentDidMount() {
-        getLoginAndPassword().then(emailPass => {
+        getLoginAndPasswordAndToken().then(emailPass => {
             if(emailPass.email && emailPass.password) {
                 this.props.changeEmail(emailPass.email);
                 this.props.changePassword(emailPass.password);

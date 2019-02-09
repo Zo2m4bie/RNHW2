@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
 import { openProductDetails } from '../actions/NavigationActions';
-import { saveProduct, reinitList, loadNextPage } from '../actions/ProductListAction';
+import { saveProduct, reinitList, loadNextPage, addToBasket } from '../actions/ProductListAction';
 import { connect } from 'react-redux';
 import { styles } from './styles';
 import { SCREEN_NAMES } from './ScreenNames';
@@ -26,7 +26,7 @@ export class ProductsListScreen extends Component {
         if(item.type === 'Header'){
             return <ProductListHeader />
         } else {
-            return <ProductListItem item={item} onPress={() => this.selectProduct(item)} />
+            return <ProductListItem item={item} addToBasket={()=> this.props.addToBasket(item)} onPress={() => this.selectProduct(item)} />
         }
     }
 
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => {
     return { productList: state.productList };
 }
 
-export const ConnectedProductsListScreen = connect(mapStateToProps, { openProductDetails, saveProduct, reinitList, loadNextPage })(ProductsListScreen);
+export const ConnectedProductsListScreen = connect(mapStateToProps, { openProductDetails, saveProduct, addToBasket, reinitList, loadNextPage })(ProductsListScreen);
