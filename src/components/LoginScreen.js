@@ -8,6 +8,7 @@ import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
 import { getLoginAndPasswordAndToken } from '../storage';
 import LottieView from 'lottie-react-native';
+import RNLocalNotifications from 'react-native-local-notifications';
 
 const DURATION = 500;
 
@@ -21,6 +22,10 @@ export class LoginScreen extends Component {
     }
     
     login = () => {
+        var m = new Date();
+        var dateString = m.getUTCFullYear() +"-"+ (m.getUTCMonth()+1) +"-"+ m.getUTCDate() + " " + m.getUTCHours() + ":" + m.getUTCMinutes();
+        console.log(dateString);
+        RNLocalNotifications.createNotification(1, 'Some text', dateString, 'default');
         this.rotate();
         this.props.loginAction();
     }
