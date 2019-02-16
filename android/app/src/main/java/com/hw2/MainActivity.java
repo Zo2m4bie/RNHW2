@@ -7,6 +7,9 @@ import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import org.devio.rn.splashscreen.SplashScreen;
 
+import android.app.NotificationManager;
+import android.content.Context;
+
 public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -30,4 +33,10 @@ public class MainActivity extends ReactActivity {
       }
     };
   }
+  @Override
+    public void onResume() {
+        super.onResume();
+        NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancelAll();
+    }
 }

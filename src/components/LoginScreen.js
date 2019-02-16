@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { styles } from './styles';
 import { SCREEN_NAMES } from './ScreenNames';
 import { NoInternetDialog } from './NoInternetDialog';
-import { getLoginAndPassword } from '../storage';
+import { getLoginAndPasswordAndToken } from '../storage';
 import LottieView from 'lottie-react-native';
+import RNLocalNotifications from 'react-native-local-notifications';
 
 const DURATION = 500;
 
@@ -21,12 +22,16 @@ export class LoginScreen extends Component {
     }
     
     login = () => {
+        var m = new Date();
+        var dateString = m.getUTCFullYear() +"-"+ (m.getUTCMonth()+1) +"-"+ m.getUTCDate() + " " + m.getUTCHours() + ":" + m.getUTCMinutes();
+        console.log(dateString);
+        RNLocalNotifications.createNotification(1, 'Some text', dateString, 'default');
         this.rotate();
         this.props.loginAction();
     }
 
     componentDidMount() {
-        getLoginAndPassword().then(emailPass => {
+        getLoginAndPasswordAndToken().then(emailPass => {
             if(emailPass.email && emailPass.password) {
                 this.props.changeEmail(emailPass.email);
                 this.props.changePassword(emailPass.password);

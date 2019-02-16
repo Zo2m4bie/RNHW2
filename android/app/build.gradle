@@ -118,6 +118,7 @@ android {
     configurations.all {
         resolutionStrategy {
             force "com.airbnb.android:lottie:2.5.5"
+            force 'com.android.support:support-v4:27.1.0'
         }
     }
     buildTypes {
@@ -142,6 +143,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-local-notifications')
     compile project(':lottie-react-native')
     compile project(':react-native-splash-screen')
     compile project(':react-native-device-info')
