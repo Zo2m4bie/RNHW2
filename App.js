@@ -24,6 +24,11 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+import { Sentry } from 'react-native-sentry';
+
+Sentry.config('https://164229acbb9249afae94118fc3634d4d@sentry.io/1395547').install();
+
+
 // type Props = {};
 
 const ConnectedSwitch = createAppContainer(routes);
